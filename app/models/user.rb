@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
     self.role ||= :user
   end
 
+  def gravatar_hash
+  	Digest::MD5.hexdigest(email)
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
